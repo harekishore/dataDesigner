@@ -6,6 +6,64 @@ import { saveAs } from 'file-saver';
 import logo from './moengage-logo-dark-2.svg';
 axios.defaults.baseURL = 'https://datadesigner.onrender.com';
 
+const tooltipStyle = {
+  display: 'inline-block',
+  position: 'relative',
+  marginLeft: 6,
+  cursor: 'pointer',
+  color: '#0052cc',
+  fontWeight: 700,
+  fontSize: 12,
+  lineHeight: 1,
+  borderRadius: '50%',
+  width: 14,
+  height: 14,
+  textAlign: 'center',
+  background: '#e3e7ed',
+  boxShadow: '0 1px 4px rgba(0,0,0,0.04)'
+};
+const tooltipBoxStyle = {
+  visibility: 'hidden',
+  opacity: 0,
+  width: 260,
+  background: '#fff',
+  color: '#1a2330',
+  textAlign: 'left',
+  borderRadius: 8,
+  padding: '10px 14px',
+  position: 'absolute',
+  zIndex: 100,
+  left: 24,
+  top: -8,
+  fontSize: 13,
+  fontWeight: 500,
+  boxShadow: '0 2px 12px rgba(0,0,0,0.10)',
+  border: '1.5px solid #e3e7ed',
+  transition: 'opacity 0.2s',
+  pointerEvents: 'none'
+};
+const tooltipHoverStyle = {
+  ...tooltipBoxStyle,
+  visibility: 'visible',
+  opacity: 1,
+  pointerEvents: 'auto'
+};
+function TooltipIcon({ text }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <span
+      style={tooltipStyle}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      tabIndex={0}
+      aria-label="Show help"
+    >
+      ?
+      <span style={hover ? tooltipHoverStyle : tooltipBoxStyle}>{text}</span>
+    </span>
+  );
+}
+
 function App() {
   const [appUrl, setAppUrl] = useState('');
   const [vertical, setVertical] = useState('ecommerce');
@@ -16,6 +74,7 @@ function App() {
   const [usecases, setUsecases] = useState([]);
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState('');
+  const [errorVisible, setErrorVisible] = useState(false);
   const urlInputRef = useRef();
   const aiUsecasesByVertical = useRef({});
 
@@ -42,6 +101,15 @@ function App() {
       localStorage.setItem('sampleDataDesignResult', JSON.stringify(result));
     }
   }, [result]);
+
+  // Show error for 5 seconds if result.error is set
+  useEffect(() => {
+    if (result && result.error) {
+      setErrorVisible(true);
+      const timer = setTimeout(() => setErrorVisible(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [result && result.error]);
 
   // Static sample usecases by vertical and channel
   const staticUsecases = {
@@ -248,9 +316,11 @@ function App() {
         goals: goals.split(',').map(g => g.trim()).filter(Boolean)
       });
       setResult(response.data);
+      setErrorVisible(false);
       localStorage.setItem('sampleDataDesignResult', JSON.stringify(response.data));
     } catch (err) {
       setResult({ error: 'Failed to get recommendations' });
+      setErrorVisible(true);
     }
     setLoading(false);
   };
@@ -308,17 +378,60 @@ function App() {
 
   return (
     <div className="App split-layout">
+      {/* Error message at top right */}
+      {result && result.error && errorVisible && (
+        <div style={{
+          position: 'fixed',
+          top: 24,
+          right: 24,
+          zIndex: 9999,
+          color: '#b30000',
+          background: '#fff0f0',
+          border: '1.5px solid #ffb3b3',
+          padding: '14px 20px',
+          borderRadius: 8,
+          fontWeight: 700,
+          fontSize: 16,
+          letterSpacing: '0.01em',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+          boxShadow: '0 2px 12px rgba(0,0,0,0.08)'
+        }}>
+          <span style={{fontWeight: 900, fontSize: 22, color:'#b30000'}}>!</span>
+          <span style={{fontWeight: 600}}>
+            {result.error === 'Failed to get recommendations' || result.error === 'Failed to get Recommendation'
+              ? 'Sorry, we could not fetch recommendations at this time. Please try again later.'
+              : result.error}
+          </span>
+        </div>
+      )}
       <div className="split-left">
         <img src={logo} alt="MoEngage Logo" style={{height: 40, marginBottom: 32}} />
         <h2>Data & Usecase Designer (Powered by Gemini)</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Client App Link: </label>
-            <input ref={urlInputRef} value={appUrl} onChange={e => setAppUrl(e.target.value)} placeholder="https://clientapp.com" required />
+            <label>Client App Link
+              <TooltipIcon text="Enter the URL of your client application (e.g., https://yourapp.com)" />
+            </label>
+            <input
+              ref={urlInputRef}
+              value={appUrl}
+              onChange={e => setAppUrl(e.target.value)}
+              placeholder="https://clientapp.com"
+              required
+              title="Enter the URL of your client application (e.g., https://yourapp.com)"
+            />
           </div>
           <div>
-            <label>Business Vertical: </label>
-            <select value={vertical} onChange={e => setVertical(e.target.value)}>
+            <label>Business Vertical
+              <TooltipIcon text="Select the industry or business vertical that best matches your app" />
+            </label>
+            <select
+              value={vertical}
+              onChange={e => setVertical(e.target.value)}
+              title="Select the industry or business vertical that best matches your app"
+            >
               <option value="ecommerce">Ecommerce</option>
               <option value="fintech">Fintech</option>
               <option value="travel">Travel</option>
@@ -343,12 +456,18 @@ function App() {
             </select>
           </div>
           <div>
-            <label>Business Goals (comma separated, optional): </label>
-            <input value={goals} onChange={e => setGoals(e.target.value)} placeholder="Increase conversions, Reduce churn" />
+            <label>Business Goals (comma separated, optional)
+              <TooltipIcon text="List your business goals separated by commas (e.g., Increase conversions, Reduce churn)" />
+            </label>
+            <input
+              value={goals}
+              onChange={e => setGoals(e.target.value)}
+              placeholder="Increase conversions, Reduce churn"
+              title="List your business goals separated by commas (e.g., Increase conversions, Reduce churn)"
+            />
           </div>
           <button type="submit" disabled={loading}>{loading ? 'Loading...' : 'Get Recommendations'}</button>
         </form>
-        {result && result.error && <div style={{color:'red'}}>{result.error}</div>}
         {result && result.fallback && (
           <div style={{color:'#b26a00', background:'#fffbe6', border:'1px solid #ffe58f', padding:'10px 16px', borderRadius:6, marginTop:12, marginBottom:12}}>
             Showing fallback recommendations (Gemini AI was not used).

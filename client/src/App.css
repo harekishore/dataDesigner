@@ -38,10 +38,10 @@ button, .download-btn {
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0,82,204,0.08);
   transition: background 0.2s, box-shadow 0.2s;
-  border-radius: 8px;
+  border-radius: 8px; /* Revert to less-rounded edges */
   padding: 12px 28px;
   margin-top: 18px;
-  margin-bottom: 8px;
+  margin-bottom: 16px; /* Add more bottom padding */
   display: inline-block;
   float: right;
   letter-spacing: 0.01em;
@@ -61,7 +61,7 @@ button:disabled, .download-btn:disabled {
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0,82,204,0.08);
   transition: background 0.2s, box-shadow 0.2s;
-  border-radius: 8px;
+  border-radius: 8px; /* Revert to less-rounded edges */
   padding: 12px 28px;
   margin-left: 16px;
   margin-top: 0;
@@ -85,6 +85,7 @@ button:disabled, .download-btn:disabled {
   padding: 0;
   text-align: left;
   height: 100%;
+  font-size: 15px;
 }
 
 .App-logo {
@@ -151,6 +152,7 @@ table {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(26,35,48,0.04);
+  font-size: 14px;
 }
 
 thead {
@@ -226,12 +228,32 @@ ul {
 }
 
 .split-left button[type="submit"] {
-  width: 100%;
+  width: calc(100% - 40px);
+  margin-left: 0;
+  margin-right: 0;
   margin-top: 18px;
-  margin-bottom: 0;
+  margin-bottom: 28px;
   float: none;
-  padding: 12px 0;
-  font-size: 1.1rem;
+  padding: 10px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: block;
+  background: linear-gradient(90deg, #0052cc 0%, #00b1f2 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0,82,204,0.10);
+  letter-spacing: 0.02em;
+  border: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.split-left button[type="submit"]:hover:not(:disabled),
+.split-left button[type="submit"]:focus:not(:disabled) {
+  background: linear-gradient(90deg, #0074ff 0%, #00e0ff 100%);
+  box-shadow: 0 6px 24px rgba(0,82,204,0.16);
+  transform: scale(1.03);
+  outline: none;
 }
 
 .split-left label {
@@ -300,6 +322,15 @@ ul {
     border-radius: 12px;
     font-size: 0.96rem;
   }
+  .split-left button[type="submit"] {
+    width: 100%;
+    border-radius: 8px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 16px;
+    padding: 12px 0;
+    font-size: 1.1rem;
+  }
   .download-btn {
     width: 100%;
     margin-left: 0;
@@ -320,7 +351,8 @@ ul {
     width: 100%;
     float: none;
     margin-top: 18px;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+    border-radius: 8px;
     padding: 12px 0;
     font-size: 1.1rem;
   }
