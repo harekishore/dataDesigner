@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/dataDesigner/static/css/main.4ddec390.css",
-    "main.js": "/dataDesigner/static/js/main.05ce64af.js",
+    "main.js": "/dataDesigner/static/js/main.7824fe61.js",
     "static/js/488.5dc00adb.chunk.js": "/dataDesigner/static/js/488.5dc00adb.chunk.js",
     "service-worker.js": "/dataDesigner/service-worker.js",
     "static/media/moengage-logo-dark-2.svg": "/dataDesigner/static/media/moengage-logo-dark-2.700fdf073b58905fa780754b7a9e5474.svg",
     "index.html": "/dataDesigner/index.html",
     "main.4ddec390.css.map": "/dataDesigner/static/css/main.4ddec390.css.map",
-    "main.05ce64af.js.map": "/dataDesigner/static/js/main.05ce64af.js.map",
+    "main.7824fe61.js.map": "/dataDesigner/static/js/main.7824fe61.js.map",
     "488.5dc00adb.chunk.js.map": "/dataDesigner/static/js/488.5dc00adb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4ddec390.css",
-    "static/js/main.05ce64af.js"
+    "static/js/main.7824fe61.js"
   ]
 }
