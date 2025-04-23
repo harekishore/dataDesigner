@@ -1,0 +1,34 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "```json\n[\n  {\n    \"name\": \"Welcome New Homeowner\",\n    \"segment\": \"Recently Closed Deals (within 30 days)\",\n    \"message\": \"Hi {{firstName}}, congratulations on your new home at {{propertyAddress}}! We hope you're settling in well. Need any recommendations for local services (plumbers, electricians, etc.)?  Reply 'SERVICES' to learn more. We also have an exclusive offer for new homeowners on home insurance with our partners.  Click here to learn more: [link]\",\n    \"channel\": \"Email\"\n  },\n  {\n    \"name\": \"Open House Reminder\",\n    \"segment\": \"Interested Buyers (saved properties matching criteria)\",\n    \"message\": \"Don't forget! Open house today for {{propertyAddress}} from {{startTime}} to {{endTime}}. It features {{keyFeature1}} and {{keyFeature2}}.  See you there!  [Map Link]\",\n    \"channel\": \"SMS\"\n  },\n  {\n    \"name\": \"Price Reduction Alert\",\n    \"segment\": \"Interested Buyers (saved property with price change)\",\n    \"message\": \"Great news, {{firstName}}! The price for {{propertyAddress}} has been reduced to ${{newPrice}}! It's a great opportunity. View the updated listing: [link]\",\n    \"channel\": \"Push\"\n  },\n  {\n    \"name\": \"Mortgage Rate Update\",\n    \"segment\": \"First-Time Homebuyers & Potential Buyers (engaged with mortgage calculator)\",\n    \"message\": \"Mortgage rates are changing! See how current rates could affect your potential home purchase. Calculate your affordability now: [link]\",\n    \"channel\": \"Email\"\n  },\n  {\n    \"name\": \"Local Market Report\",\n    \"segment\": \"Existing Homeowners (within specific zip code)\",\n    \"message\": \"Hi {{firstName}}, stay informed! Here's the latest market report for {{zipCode}}.  See how your home value may have changed: [link] Contact us if you want a free home valuation.\",\n    \"channel\": \"Email\"\n  },\n  {\n    \"name\": \"Anniversary of Home Purchase\",\n    \"segment\": \"Past Clients (purchased within the last 5 years)\",\n    \"message\": \"Happy Anniversary, {{firstName}}! One year ago, you found your perfect home with us. Wishing you many more happy years in {{propertyAddress}}!  Thinking of upgrading or downsizing? Let's chat. [link to schedule]\",\n    \"channel\": \"Email\"\n  },\n  {\n    \"name\": \"Neighborhood Event Announcement\",\n    \"segment\": \"Existing Homeowners (within specific neighborhood)\",\n    \"message\": \"Hey Neighbors! Join us for a neighborhood BBQ at {{parkName}} on {{date}}!  Come meet your community and enjoy some food and fun. RSVP here: [link]\",\n    \"channel\": \"WhatsApp\"\n  },\n  {\n    \"name\": \"New Listing Alert (Based on Search Criteria)\",\n    \"segment\": \"Interested Buyers (saved search criteria)\",\n    \"message\": \"A new property matching your search criteria is on the market! {{propertyAddress}} features {{bed}} bedrooms, {{bath}} bathrooms, and is listed at ${{price}}. Check it out before it's gone: [link]\",\n    \"channel\": \"Email\"\n  },\n  {\n    \"name\": \"Referral Program Promotion\",\n    \"segment\": \"Past Clients (satisfied customers)\",\n    \"message\": \"{{firstName}}, share the joy of finding a dream home! Refer a friend and earn a ${{reward}} when they buy or sell with us. Learn more: [link]\",\n    \"channel\": \"Email\"\n  },\n  {\n    \"name\": \"Agent Follow-Up (After Initial Inquiry)\",\n    \"segment\": \"New Leads (contacted via form or phone)\",\n    \"message\": \"Hi {{firstName}}, this is {{agentName}} from {{companyName}}. Just following up on your inquiry about finding a new home.  Do you have a few minutes to chat about your needs and preferences?\",\n    \"channel\": \"SMS\"\n  },\n  {\n    \"name\": \"Property Valuation Offer\",\n    \"segment\": \"Existing Homeowners (not recently engaged)\",\n    \"message\": \"{{firstName}}, curious about your home's current market value? Get a free, no-obligation valuation from our expert team: [link]\",\n    \"channel\": \"Email\"\n  },\n  {\n    \"name\": \"Review Request\",\n    \"segment\": \"Recently Closed Deals (after 60 days)\",\n    \"message\": \"Hi {{firstName}}, we hope you're loving your new home!  We'd greatly appreciate it if you could share your experience working with us by leaving a review: [link]\",\n    \"channel\": \"Email\"\n  },\n    {\n    \"name\": \"Down Payment Assistance Program Alert\",\n    \"segment\": \"First-Time Homebuyers & Potential Buyers (engaged with affordability tools but didn't convert)\",\n    \"message\": \"Did you know? Down payment assistance programs are available in {{city}}. See if you qualify and get one step closer to owning your dream home: [link]\",\n    \"channel\": \"Email\"\n  },\n  {\n    \"name\": \"Property Detail Retargeting Ad\",\n    \"segment\": \"Website Visitors (viewed a specific property)\",\n    \"message\": \"Remember {{propertyAddress}}?  It could be yours!  Take another look and schedule a showing today: [link]\",\n    \"channel\": \"Push\"\n  }\n]\n```"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.3561829815944427
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 76,
+    "candidatesTokenCount": 1218,
+    "totalTokenCount": 1294,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 76
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1218
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash"
+}
