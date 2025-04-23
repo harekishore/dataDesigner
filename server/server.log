@@ -328,3 +328,14 @@ Gemini API raw response: {
   "modelVersion": "gemini-2.0-flash"
 }
 [0mPOST /recommend [32m200 [0m16281.578 ms - 5352[0m
+[0mGET /moengage-logo-dark-2.svg [33m404 [0m11.280 ms - 163[0m
+[0mGET /moengage-logo-dark-2.svg [33m404 [0m4.307 ms - 163[0m
+[0mGET /moengage-logo-dark-2.svg [33m404 [0m4.173 ms - 163[0m
+[0mGET /moengage-logo-dark-2.svg [33m404 [0m1.295 ms - 163[0m
+[0mGET /moengage-logo-dark-2.svg [33m404 [0m2.885 ms - 163[0m
+[0mGET /moengage-logo-dark-2.svg [33m404 [0m1.710 ms - 163[0m
+[0mGET /moengage-logo-dark-2.svg [33m404 [0m3.810 ms - 163[0m
+[0mGET /moengage-logo-dark-2.svg [33m404 [0m0.745 ms - 163[0m
+[0mGET /dataDesigner/moengage-logo-dark-2.svg [33m404 [0m3.614 ms - 176[0m
+[0mGET /dataDesigner/moengage-logo-dark-2.svg [33m404 [0m1.799 ms - 176[0m
+[0mGET /dataDesigner/moengage-logo-dark-2.svg [33m404 [0m6.126 ms - 176[0m
