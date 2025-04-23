@@ -247,9 +247,9 @@ router.post('/recommend', async function(req, res) {
 
 // Gemini-powered usecase fetcher
 router.post('/ai-usecases', async function(req, res) {
-  const { vertical } = req.body;
+  const { vertical, goals, clientName } = req.body;
   if (!vertical) return res.status(400).json({ error: 'vertical is required' });
-  const prompt = `You are a marketing automation expert. Suggest 12-15 creative campaign usecases for a ${vertical} business. For each usecase, provide: name, segment/cohort, sample message (with personalisation), and the most suitable channel (Push, Email, SMS, WhatsApp). Respond in JSON as an array of objects: [{ name, segment, message, channel }].`;
+  const prompt = `You are a marketing automation expert. Suggest 12-15 creative campaign usecases for a business with the following details:\n\nClient Name: ${req.body.appUrl || clientName || 'N/A'}\nBusiness Vertical: ${vertical}\nBusiness Metrics/Goals: ${Array.isArray(goals) ? goals.join(', ') : goals || 'N/A'}\n\nFor each usecase, provide: name, segment/cohort, sample message (with personalisation), and the most suitable channel (Push, Email, SMS, WhatsApp). Respond in JSON as an array of objects: [{ name, segment, message, channel }].`;
   const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
   try {
