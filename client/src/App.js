@@ -411,16 +411,16 @@ function App() {
         <h2>Data & Usecase Designer (Powered by Gemini)</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Client App Link
-              <TooltipIcon text="Enter the URL of your client application (e.g., https://yourapp.com)" />
+            <label>Client Name
+              <TooltipIcon text="Enter the name of your client (e.g., Acme Corp, MyApp, etc.)" />
             </label>
             <input
               ref={urlInputRef}
               value={appUrl}
               onChange={e => setAppUrl(e.target.value)}
-              placeholder="https://clientapp.com"
+              placeholder="Acme Corp"
               required
-              title="Enter the URL of your client application (e.g., https://yourapp.com)"
+              title="Enter the name of your client (e.g., Acme Corp, MyApp, etc.)"
             />
           </div>
           <div>
